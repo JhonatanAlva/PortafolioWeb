@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portafolio de Jhonatan Alva - Desarrollador Full Stack especializado en sistemas ERP y aplicaciones web."
+    />
+    <title>Jhonatan Alva | Portafolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#">
+          <span>&lt;/&gt;</span>
+          <span>Jhonatan Dev</span>
+        </a>
+
+        <nav class="nav">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </header>
+
+      <main class="dashboard">
+        <!-- HERO -->
+        <section class="card hero" id="inicio">
+          <div>
+            <p class="kicker">Disponible para trabajar</p>
+            <h1>Jhonatan Alva</h1>
+            <h2>Desarrollador Full Stack</h2>
+            <p>
+              Especializado en desarrollo de sistemas ERP, aplicaciones financieras
+              y plataformas web modernas. Experiencia con React, Node.js y MySQL.
+            </p>
+            <a class="btn primary" href="#proyectos">Ver proyectos</a>
+          </div>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section class="card" id="proyectos">
+          <h3>Proyectos</h3>
+          <div id="projectsGrid" class="projects-grid"></div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="card" id="habilidades">
+          <h3>Habilidades</h3>
+          <div id="skillsGrid"></div>
+        </section>
+
+        <!-- EXPERIENCIA -->
+        <section class="card" id="experiencia">
+          <h3>Experiencia</h3>
+          <div id="timeline"></div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="card" id="contacto">
+          <h3>Contacto</h3>
+          <p>Email: tuemail@gmail.com</p>
+          <p>GitHub: github.com/JhonatanAlva</p>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
