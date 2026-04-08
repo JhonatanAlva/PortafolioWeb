@@ -1,0 +1,388 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-alt: #eef2f9;
+  --text: #1c2430;
+  --muted: #5f6c80;
+  --primary: #4f46e5;
+  --primary-strong: #4338ca;
+  --border: #d9e1ef;
+  --shadow: 0 18px 45px rgba(20, 32, 66, 0.08);
+}
+
+body.dark {
+  --bg: #0f172a;
+  --surface: #131c31;
+  --surface-alt: #1d2943;
+  --text: #ecf3ff;
+  --muted: #9fb0cc;
+  --primary: #818cf8;
+  --primary-strong: #6366f1;
+  --border: #2f3e62;
+  --shadow: 0 20px 40px rgba(2, 6, 23, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top right, #8ea8ff30, transparent 45%),
+    var(--bg);
+  line-height: 1.6;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 1.25rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky;
+  top: 0.75rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+}
+
+.brand-mark {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--primary);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.dashboard {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.hero h1 {
+  margin: 0.25rem 0 0;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.hero h2 {
+  margin: 0.2rem 0 0.9rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+.hero p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-strong);
+}
+
+.btn.secondary {
+  background: var(--surface-alt);
+  border-color: var(--border);
+}
+
+.hero-photo-wrapper {
+  margin: 0;
+}
+
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+}
+
+.section-head h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.section-head p {
+  margin: 0.35rem 0 1rem;
+  color: var(--muted);
+}
+
+.projects-grid,
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.85rem;
+}
+
+.project-card,
+.skill-card {
+  grid-column: span 4;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface-alt);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 0.85rem;
+}
+
+.project-content h4,
+.skill-card h4 {
+  margin: 0;
+}
+
+.project-content p {
+  margin: 0.45rem 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.project-actions .btn {
+  font-size: 0.86rem;
+  padding: 0.5rem 0.8rem;
+}
+
+.skill-card {
+  padding: 0.95rem;
+}
+
+.chips {
+  list-style: none;
+  padding: 0;
+  margin: 0.7rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chips li {
+  padding: 0.26rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.83rem;
+}
+
+.timeline {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.timeline-item {
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  border-radius: 1rem;
+  padding: 0.9rem;
+}
+
+.timeline-item h4 {
+  margin: 0;
+}
+
+.meta {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: grid;
+  gap: 0.35rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  border-radius: 0.75rem;
+  padding: 0.68rem 0.72rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--primary) 48%, transparent);
+  outline-offset: 1px;
+}
+
+.form-message {
+  margin: 0.1rem 0 0;
+  color: var(--primary);
+  min-height: 1.35rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    max-height: 340px;
+  }
+
+  .project-card,
+  .skill-card {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-card,
+  .skill-card {
+    grid-column: span 12;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+}
