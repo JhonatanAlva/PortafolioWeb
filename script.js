@@ -8,8 +8,9 @@ let currentLang = "es";
 // =========================
 const projects = [
   {
-    title: "MiSaldo",
+    title: "SaldoGt",
     category: "finance",
+    demo: "https://www.misaldo.lat",
     images: [
       "assets/images/projects/misaldo/misaldo1.png",
       "assets/images/projects/misaldo/misaldo2.png",
@@ -17,7 +18,7 @@ const projects = [
       "assets/images/projects/misaldo/misaldo4.png",
       "assets/images/projects/misaldo/misaldo5.png",
     ],
-    tech: ["React", "Node.js", "MySQL", "JWT"],
+    tech: ["React", "Node.js", "PostgreSQL", "JWT"],
     description: {
       es: [
         "Sistema de gestión financiera personal.",
@@ -86,7 +87,7 @@ const projects = [
   },
   {
     title: "Sistema de Tickets (Kanban)",
-    category: "erp",
+    category: "otros",
     images: [
       "assets/images/projects/tickets/tickets1.png",
       "assets/images/projects/tickets/tickets2.png",
@@ -111,7 +112,7 @@ const projects = [
   },
   {
     title: "Sistema de Preguntas y Respuestas",
-    category: "erp",
+    category: "otros",
     images: [
       "assets/images/projects/qa/qa1.png",
       "assets/images/projects/qa/qa2.png",
@@ -189,12 +190,35 @@ function renderProjects(list) {
               .join("")}
           </div>
 
-          <!-- BUTTON -->
-          <button onclick='openGallery(${JSON.stringify(p.images)})'
-            class="mt-5 bg-orange-500 px-5 py-2 rounded-lg 
-            hover:bg-orange-600 transition w-full font-medium">
-            ${currentLang === "es" ? "Ver Proyecto" : "View Project"}
-          </button>
+                    <!-- BUTTONS -->
+          <div class="mt-5 flex gap-3">
+
+            <!-- VER PROYECTO -->
+            <button 
+              onclick='openGallery(${JSON.stringify(p.images)})'
+              class="bg-orange-500 px-5 py-2 rounded-lg 
+              hover:bg-orange-600 transition w-full font-medium"
+            >
+              ${currentLang === "es" ? "Ver Proyecto" : "View Project"}
+            </button>
+
+            <!-- VER DEMO -->
+            ${
+              p.demo
+                ? `
+              <a 
+                href="${p.demo}" 
+                target="_blank"
+                class="bg-gray-700 px-5 py-2 rounded-lg 
+                hover:bg-gray-600 transition w-full font-medium text-center"
+              >
+                ${currentLang === "es" ? "Ver Demo" : "Live Demo"}
+              </a>
+            `
+                : ""
+            }
+
+          </div>
 
         </div>
       </div>
@@ -296,6 +320,11 @@ function goToSlide(index) {
 
 function updateSlider() {
   document.getElementById("sliderImage").src = currentImages[currentIndex];
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("hidden");
 }
 
 // =========================
@@ -418,8 +447,12 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 function sendWhatsApp() {
   const name = document.querySelector('[data-i18n-placeholder="name"]').value;
   const email = document.querySelector('[data-i18n-placeholder="email"]').value;
-  const subject = document.querySelector('[data-i18n-placeholder="subject"]').value;
-  const message = document.querySelector('[data-i18n-placeholder="message"]').value;
+  const subject = document.querySelector(
+    '[data-i18n-placeholder="subject"]',
+  ).value;
+  const message = document.querySelector(
+    '[data-i18n-placeholder="message"]',
+  ).value;
 
   const text = `Hola, soy ${name}%0AEmail: ${email}%0AAsunto: ${subject}%0AMensaje: ${message}`;
 
