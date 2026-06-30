@@ -276,7 +276,7 @@ hover:shadow-orange-500/40
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
       <!-- FOTO -->
       <div class="flex justify-center" data-aos="fade-right">
-        <img src="assets/profile/foto.jpg" class="
+        <img src="assets/profile/foto.jpg" alt="Foto de perfil de Jhonatan Alvarado" class="
 w-80 h-80 object-cover rounded-3xl
 border border-orange-500/20
 shadow-2xl
@@ -378,17 +378,17 @@ transition duration-500
     </p>
 
     <!-- FILTROS -->
-    <div class="flex justify-center gap-4 mb-10">
-      <button onclick="filterProjects('all')" class="bg-orange-500 px-4 py-2 rounded">
+    <div id="filterButtons" class="flex justify-center gap-4 mb-10">
+      <button data-filter="all" onclick="filterProjects('all')" class="bg-orange-500 px-4 py-2 rounded transition">
         All
       </button>
-      <button onclick="filterProjects('erp')" class="bg-gray-700 px-4 py-2 rounded">
+      <button data-filter="erp" onclick="filterProjects('erp')" class="bg-gray-700 px-4 py-2 rounded transition">
         ERP
       </button>
-      <button onclick="filterProjects('finance')" class="bg-gray-700 px-4 py-2 rounded">
+      <button data-filter="finance" onclick="filterProjects('finance')" class="bg-gray-700 px-4 py-2 rounded transition">
         Finance
       </button>
-      <button onclick="filterProjects('otros')" class="bg-gray-700 px-4 py-2 rounded">
+      <button data-filter="otros" onclick="filterProjects('otros')" class="bg-gray-700 px-4 py-2 rounded transition">
         Otros
       </button>
     </div>

@@ -156,8 +156,8 @@ function renderProjects(list) {
 
         <!-- IMAGE -->
         <div class="overflow-hidden">
-          <img src="${p.images[0]}" 
-            class="w-full h-56 object-cover 
+          <img src="${p.images[0]}" alt="Captura del proyecto ${p.title}"
+            class="w-full h-56 object-cover
             group-hover:scale-110 transition duration-700">
         </div>
 
@@ -195,7 +195,7 @@ function renderProjects(list) {
 
             <!-- VER PROYECTO -->
             <button 
-              onclick='openGallery(${JSON.stringify(p.images)})'
+              onclick='openGallery(${JSON.stringify(p.images)}, ${JSON.stringify(p.title)})'
               class="bg-orange-500 px-5 py-2 rounded-lg 
               hover:bg-orange-600 transition w-full font-medium"
             >
@@ -235,6 +235,12 @@ renderProjects(projects);
 // FILTRO
 // =========================
 function filterProjects(type) {
+  document.querySelectorAll("#filterButtons button").forEach((btn) => {
+    const isActive = btn.dataset.filter === type;
+    btn.classList.toggle("bg-orange-500", isActive);
+    btn.classList.toggle("bg-gray-700", !isActive);
+  });
+
   if (type === "all") return renderProjects(projects);
   renderProjects(projects.filter((p) => p.category === type));
 }
@@ -242,7 +248,7 @@ function filterProjects(type) {
 // =========================
 // MODAL GALERÍA
 // =========================
-function openGallery(images) {
+function openGallery(images, title = "Proyecto") {
   const modal = document.getElementById("modal");
 
   modal.innerHTML = `
@@ -255,18 +261,18 @@ function openGallery(images) {
 
       <div class="flex items-center gap-4">
 
-        <button onclick="prevSlide()" 
+        <button onclick="prevSlide()"
           class="text-white text-3xl px-3 hover:text-orange-400">
           ‹
         </button>
 
         <div class="flex-1">
-          <img id="sliderImage" 
-            src="${images[0]}" 
+          <img id="sliderImage"
+            src="${images[0]}" alt="${title} - imagen 1 de ${images.length}"
             class="w-full h-[500px] object-contain rounded-xl">
         </div>
 
-        <button onclick="nextSlide()" 
+        <button onclick="nextSlide()"
           class="text-white text-3xl px-3 hover:text-orange-400">
           ›
         </button>
@@ -277,7 +283,7 @@ function openGallery(images) {
         ${images
           .map(
             (img, i) => `
-          <img src="${img}" 
+          <img src="${img}" alt="${title} - miniatura ${i + 1}"
             onclick="goToSlide(${i})"
             class="w-24 h-16 object-cover rounded cursor-pointer hover:scale-110 transition">
         `,
@@ -292,6 +298,7 @@ function openGallery(images) {
 
   window.currentImages = images;
   window.currentIndex = 0;
+  window.currentGalleryTitle = title;
 
   modal.onclick = (e) => {
     if (e.target.id === "modal") closeModal();
@@ -319,7 +326,9 @@ function goToSlide(index) {
 }
 
 function updateSlider() {
-  document.getElementById("sliderImage").src = currentImages[currentIndex];
+  const sliderImage = document.getElementById("sliderImage");
+  sliderImage.src = currentImages[currentIndex];
+  sliderImage.alt = `${window.currentGalleryTitle} - imagen ${currentIndex + 1} de ${currentImages.length}`;
 }
 
 function toggleMobileMenu() {
