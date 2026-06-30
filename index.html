@@ -462,7 +462,7 @@ transition duration-500
       </h3>
 
       <div class="grid md:grid-cols-2 gap-4">
-        <input data-i18n-placeholder="name" placeholder="Tu nombre" class="
+        <input id="formName" data-i18n-placeholder="name" placeholder="Tu nombre" class="
 w-full p-3 bg-black/60 rounded-xl
 border border-gray-700
 focus:border-orange-500
@@ -470,7 +470,7 @@ focus:outline-none
 transition
 " />
 
-        <input data-i18n-placeholder="email" placeholder="Tu email" class="
+        <input id="formEmail" data-i18n-placeholder="email" placeholder="Tu email" class="
 w-full p-3 bg-black/60 rounded-xl
 border border-gray-700
 focus:border-orange-500
@@ -479,11 +479,15 @@ transition
 " />
       </div>
 
-      <input data-i18n-placeholder="subject" placeholder="Asunto"
+      <input id="formSubject" data-i18n-placeholder="subject" placeholder="Asunto"
         class="w-full p-3 mt-4 bg-black/60 rounded-xl border border-gray-700 focus:border-orange-500 focus:outline-none transition" />
 
-      <textarea data-i18n-placeholder="message" placeholder="Mensaje"
+      <textarea id="formMessage" data-i18n-placeholder="message" placeholder="Mensaje"
         class="w-full p-3 mt-4 bg-black/60 rounded-xl border border-gray-700 focus:border-orange-500 focus:outline-none transition h-32"></textarea>
+
+      <p id="formError" class="text-red-400 text-sm mt-2 hidden" data-i18n="formError">
+        Por favor completa todos los campos antes de enviar.
+      </p>
 
       <button type="button" onclick="sendWhatsApp()"
         class="bg-orange-500 w-full py-3 rounded-lg mt-5 hover:bg-orange-600 transition font-medium">

@@ -359,6 +359,7 @@ const translations = {
     availableDesc: "Disponible para proyectos freelance y trabajo full-time.",
     formTitle: "Envíame un mensaje",
     sendBtn: "Enviar mensaje",
+    formError: "Por favor completa todos los campos antes de enviar.",
 
     name: "Tu nombre",
     email: "Tu email",
@@ -394,6 +395,7 @@ const translations = {
     availableDesc: "Available for freelance projects and full-time positions.",
     formTitle: "Send me a message",
     sendBtn: "Send message",
+    formError: "Please fill in all fields before sending.",
 
     name: "Your name",
     email: "Your email",
@@ -445,15 +447,30 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // ENVIAR WHATSAPP
 // =========================
 function sendWhatsApp() {
-  const name = document.querySelector('[data-i18n-placeholder="name"]').value;
-  const email = document.querySelector('[data-i18n-placeholder="email"]').value;
-  const subject = document.querySelector(
-    '[data-i18n-placeholder="subject"]',
-  ).value;
-  const message = document.querySelector(
-    '[data-i18n-placeholder="message"]',
-  ).value;
+  const fields = [
+    document.getElementById("formName"),
+    document.getElementById("formEmail"),
+    document.getElementById("formSubject"),
+    document.getElementById("formMessage"),
+  ];
 
+  const errorEl = document.getElementById("formError");
+  let hasEmpty = false;
+
+  fields.forEach((field) => {
+    const isEmpty = field.value.trim() === "";
+    field.classList.toggle("border-red-500", isEmpty);
+    if (isEmpty) hasEmpty = true;
+  });
+
+  if (hasEmpty) {
+    errorEl.classList.remove("hidden");
+    return;
+  }
+
+  errorEl.classList.add("hidden");
+
+  const [name, email, subject, message] = fields.map((f) => f.value.trim());
   const text = `Hola, soy ${name}%0AEmail: ${email}%0AAsunto: ${subject}%0AMensaje: ${message}`;
 
   window.open(`https://wa.me/50255328760?text=${text}`, "_blank");
