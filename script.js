@@ -309,6 +309,12 @@ function closeModal() {
   document.getElementById("modal").classList.add("hidden");
 }
 
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  const modal = document.getElementById("modal");
+  if (!modal.classList.contains("hidden")) closeModal();
+});
+
 function nextSlide() {
   currentIndex = (currentIndex + 1) % currentImages.length;
   updateSlider();
@@ -357,6 +363,7 @@ const translations = {
     navContact: "Contacto",
     btnProjects: "Ver proyectos",
     btnContact: "Contactar",
+    btnCV: "Descargar CV",
 
     projectsTitle: "Proyectos",
     contactTitle1: "Hablemos",
@@ -392,6 +399,7 @@ const translations = {
     stackTitle: "MAIN STACK",
     btnProjects: "View projects",
     btnContact: "Contact",
+    btnCV: "Download CV",
 
     projectsTitle: "Projects",
 
