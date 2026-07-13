@@ -133,6 +133,28 @@ const projects = [
       ],
     },
   },
+  {
+    title: "Sistema de Auditoria de Seguridad",
+    category: "otros",
+    images: [
+      "assets/images/projects/SecurityAudit/securityaudit.png",
+      "assets/images/projects/SecurityAudit/securityaudit1.png",
+      "assets/images/projects/SecurityAudit/securityaudit2.png",
+    ],
+    tech: ["C#", "React"],
+    description: {
+      es: [
+        "Sistema de auditoría de seguridad.",
+        "Control y monitoreo de actividades.",
+        "Generación de reportes detallados.",
+      ],
+      en: [
+        "Security audit system.",
+        "Control and monitoring of activities.",
+        "Generation of detailed reports.",
+      ],
+    },
+  }
 ];
 
 // =========================
